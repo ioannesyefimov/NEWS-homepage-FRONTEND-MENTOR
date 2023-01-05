@@ -1,0 +1,442 @@
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  /*
+    2. Remove default margin
+  */
+  * {
+    margin: 0;
+  }
+  /*
+    3. Allow percentage-based heights in the application
+  */
+  html, body {
+    height: 100%;
+  }
+  /*
+    Typographic tweaks!
+    4. Add accessible line-height
+    5. Improve text rendering
+  */
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  /*
+    6. Improve media defaults
+  */
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  /*
+    7. Remove built-in form typography styles
+  */
+  input, button, textarea, select {
+    font: inherit;
+  }
+  /*
+    8. Avoid text overflows
+  */
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  /*
+    9. Create a root stacking context
+  */
+  #root, #__next {
+    isolation: isolate;
+}
+
+:root {
+    --clr-p-soft-orange:hsl(35, 77%, 62%);
+    --clr-p-soft-red:hsl(5, 85%, 63%);
+
+    --clr-n-off-white:hsl(36, 100%, 99%);
+    --clr-n-grayish-blue:hsl(233, 8%, 79%);
+    --clr-n-dark-grayish-blue: hsl(236, 13%, 42%);
+    --clr-n-very-dark-blue: hsl(240, 100%, 5%);
+
+    --font: 'Inter', sans-serif;
+
+    --fw-light: 400;
+    --fw-bolder: 700;
+    --fw-boldest: 800;
+
+
+    
+}
+
+body {
+    font-size: 15px;
+    font-family: var(--font);
+    position: relative;
+
+}
+
+ul, li {
+    padding: 0;
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+.hidden {
+    display: none;
+}
+/* NAVIGATION */
+body {
+
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 1rem;
+    gap:1rem;
+}
+.logo, .hamburger {
+    max-width: 14vw;
+}
+/* HAMBURGER MENU START */
+.hamburger {
+    background: transparent;
+    
+    border: none;
+    display: absolute;
+
+    
+;
+}
+
+.menu {
+    align-self: center;
+}
+.nav-links[data-is-mobile='true']{
+    position: absolute;
+    right: 0;
+    top:0;
+    min-height: 100vh;
+    width: 70%;
+   background-color: var(--clr-n-off-white);
+   display: flex;
+   align-items: center;
+   padding: 1.5rem;
+
+}
+.nav-links[data-is-mobile='true']::before {
+    content: '';
+    width: 50%;
+    height: 100vh;
+    opacity: 0.45;
+    position: absolute;
+    left: -50%;
+    background-color: var(--clr-n-very-dark-blue);
+}
+.navbar[data-is-active='false'] {
+    display: none;
+}
+.nav-link {
+    margin: 1rem 0;
+}
+.nav-link a {
+    color: var(--clr-n-very-dark-blue);
+    font-size: 1.1rem;
+
+}
+
+.hamburger {
+    position: absolute;
+    right: 1rem;
+    top:2rem
+}
+body[data-menu-active='true'] {
+   overflow: hidden;
+}
+
+/* HAMBURGER MENU END */
+/* NAVIGATION END */
+
+/* MAIN START */
+main {
+    display: grid;
+    padding: 1rem;
+    gap:4rem
+}
+
+/* MAIN NEWS  START*/
+.main-news {
+    display: grid;
+    gap: 1rem;
+}
+.front-title {
+    line-height: 1.1;
+    color: var(--clr-n-very-dark-blue);
+    font-size: 2.3rem;
+    font-weight: var(--fw-boldest);
+    max-width: 12ch;
+}
+.front-text {
+    color: var(--clr-n-dark-grayish-blue);
+}
+.btn {
+    background-color: var(--clr-p-soft-red);
+    border: none;
+    padding: .6rem 2rem;
+    text-transform: uppercase;
+    color: var(--clr-n-off-white);
+    font-weight: var(--fw-bolder);
+    letter-spacing: .15rem;
+    margin: 0 auto 0 0 ;
+    
+}
+.flex-group {
+    display: grid;
+    gap:1rem;
+}
+
+/* MAIN NEWS END */
+
+/* SIDE NEWS START */
+
+.side-news {
+    display: flex;
+    flex-direction: column;
+
+    padding: 1rem;
+    gap:1rem;
+    background-color: var(--clr-n-very-dark-blue);
+
+}
+.side-content {
+    margin: 0 auto;
+}
+.side-title {
+    color: var(--clr-p-soft-orange);
+    font-size: 2rem;
+}
+.side-elements {
+
+}
+
+.side-element {
+    gap:.2rem;
+    padding: 1.4rem 0rem;
+
+    position: relative;
+
+}
+.side-element::after {
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: var(--clr-n-dark-grayish-blue);
+    position: absolute;
+    bottom: -2%;
+}
+.side-element:last-child::after {
+    display: none;
+}
+.side-sub-title {
+    color: var(--clr-n-off-white);
+    font-weight: var(--fw-bolder);
+    font-size: clamp(1.35rem, 0.805rem + 2.327vw, 1.75rem);
+        max-width: 20ch;
+}
+.side-sub-text {
+    font-size: 1.1rem;
+    color: var(--clr-n-grayish-blue);
+    font-weight: var(--fw-light);
+    font-size: clamp(0.85rem, 0.645rem + 0.873vw, 1rem);
+    max-width: 32ch;
+}
+
+/* SIDE NEWS END */
+
+/* UNDER CATEGORY START */
+
+.under-category {
+    display: grid;
+    gap:2.3rem;
+}
+
+.under-card {
+    display: grid;
+    grid-template-columns: 30% 1fr ;
+    grid-template-areas: 
+    "img img card-text "
+    "img img card-text "
+    "img img card-text";
+    gap:0rem 1rem;
+}
+.card-title, .card-text {
+    
+}
+.under-card img {
+    grid-area: img;
+}
+.card-counter {
+    font-size: clamp(2rem, 1.318rem + 2.909vw, 2.5rem);
+    color: var(--clr-n-grayish-blue);
+    font-weight: var(--fw-bolder);
+}
+.card-title {
+    color: var(--clr-n-very-dark-blue);
+    font-weight: var(--fw-boldest);
+    font-size: clamp(1.1rem, 0.282rem + 3.491vw, 1.7rem);
+}
+.card-text {
+    grid-area: text;
+    color: var(--clr-n-dark-grayish-blue);
+    font-size: clamp(1rem, 0.659rem + 1.455vw, 1.25rem);
+
+}
+.card-text-content {
+    grid-area: card-text;
+}
+
+/* UNDER CATEGORY END */
+
+
+
+/* DESKTOP LAYOUT */
+
+@media (min-width:750px) {
+    .hamburger {
+        display: none;
+    }
+    /* NAVBAR START */
+    nav {
+        padding: 3rem clamp(2rem, -0.857rem + 7.619vw, 6rem) 1rem;
+   
+    }
+    .menu{
+        flex-basis: 0;
+        align-self: center;
+
+    }
+    .nav-links {
+        display: flex;
+        gap:1.7rem;
+    }
+    .nav-link a {
+        color: var(--clr-n-dark-grayish-blue)
+    }
+    /* NAVBAR END */
+
+    /* MAIN START */
+    main {
+        display: grid;
+        grid-template-columns: 1fr 1fr 30%;
+        grid-template-rows: repeat(3, minmax(5rem, clamp(12rem, 5.478rem + 13.913vw, 18rem))) 25%;
+        gap:1rem;
+        grid-template-areas: 
+        "main main  side"
+        "main main  side"
+        "under under  under"
+        ;
+        padding: 2rem clamp(2rem, -2.114rem + 10.127vw, 7rem);
+    }
+    /* MAIN NEWS START */
+    
+    .main-news {
+        grid-area: main;
+        
+        display: grid;
+        grid-template-columns: repeat(4, minmax(5rem, 15rem));
+        grid-template-rows: clamp(11rem, 1.127rem + 24.304vw, 23rem) repeat(2, minmax(2rem,6rem));
+        grid-template-areas: 
+        "img img img img "
+        "heading heading text text  "
+        "heading heading btn btn "
+        ;
+        gap: 0
+    }
+    .content-image {
+        grid-area: img;
+
+    }
+    .content-image img {
+        width: 100%;
+        content: url(assets/images/image-web-3-desktop.jpg);
+    }
+    .front-title {
+        grid-area: heading;
+        font-size: clamp(1.8rem, -0.048rem + 3.942vw, 3.5rem);  
+        max-width: 9ch;
+    }
+    .front-text {
+        grid-area: text;
+        font-size: clamp(0.8rem, 0.553rem + 0.608vw, 1.1rem);
+
+
+    }
+    .btn {
+        grid-area: btn;
+
+    }
+    
+    .flex-group {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(1.1rem, -0.15rem + 2.667vw, 2.25rem);
+        grid-column: 3/5;
+        grid-row: 2/4;
+    }
+    
+    .btn {
+         font-size: clamp(0.8rem, 0.553rem + 0.608vw, 1.1rem);
+    }
+/* MAIN NEWS END */
+
+    /* SIDE NEWS START */
+    .side-news {
+        grid-area: side;
+    }
+    .side-element {
+        padding: .8rem 0;
+    }
+    .side-title {
+        font-size: clamp(1.35rem, 0.815rem + 1.316vw, 2rem);
+    }
+    .side-sub-title{
+        font-size: clamp(0.9rem, 0.324rem + 1.418vw, 1.6rem);
+    }
+    .side-sub-text{
+        font-size: clamp(0.6rem, 0.271rem + 0.81vw, 1rem);
+    }
+
+    /* SIDE NEWS END */
+
+    /* UNDER CATEGORY START */
+    .under-category {
+        grid-area: under;
+        display: flex;
+        align-self: center;
+    }
+    .under-card {
+         grid-template-columns: 37% 1fr;
+    }
+    .card-text-content {
+        grid-area: card-text;
+    }
+    .under-card img {
+        width: 100%;
+        grid-area: img;
+    }
+    .card-counter {
+        font-size: clamp(1.3rem, 0.159rem + 2.435vw, 2.35rem);
+    }
+    .card-title {
+        font-size: clamp(0.8rem, 0.202rem + 1.275vw, 1.35rem);
+    }
+    .card-text {
+        font-size: clamp(0.6rem, 0.165rem + 0.928vw, 1rem);
+        grid-area: text;
+    }
+    /* UNDER CATEGORY END */
+}
